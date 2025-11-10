@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      background: linear-gradient(135deg,#f8fafc,#fff7ed,#e0f2fe);
+      background-size: 600% 600%;
+      animation: gradientShift 20s ease infinite;
+      scroll-behavior: smooth;
+    }
+    @keyframes gradientShift {
+      0%{background-position:0% 50%;}
+      50%{background-position:100% 50%;}
+      100%{background-position:0% 50%;}
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        120deg,
+        rgba(249,115,22,0.25),
+        rgba(59,130,246,0.25),
+        rgba(255,255,255,0.25)
+      );
+      background-size: 400% 400%;
+      animation: heroShift 15s ease infinite;
+      z-index: 0;
+    }
+    @keyframes heroShift {
+      0% { background-position:0% 50%; }
+      50% { background-position:100% 50%; }
+      100% { background-position:0% 50%; }
+    }
+    .bg-zt-orange { background-color: #F97316; }
+    .text-zt-orange { color: #F97316; }
+    .btn-primary,
+    .btn-enhanced-primary,
+    .btn-secondary {
+      display:inline-block;
+      font-weight:600;
+      padding:0.9rem 2.5rem;
+      border-radius:0.75rem;
+      text-align:center;
+      transition:all 0.3s ease-in-out;
+      cursor:pointer;
+    }
+    .btn-primary {
+      background:#F97316;
+      color:#fff;
+      box-shadow:0 8px 20px rgba(249,115,22,0.4);
+    }
+    .btn-primary:hover { background:#EA580C; transform:scale(1.05); }
+    .btn-enhanced-primary {
+      background:linear-gradient(90deg,#F97316,#fb923c);
+      color:#fff;
+      box-shadow:0 8px 24px rgba(249,115,22,0.5);
+    }
+    .btn-enhanced-primary:hover {
+      background:linear-gradient(90deg,#EA580C,#f97316);
+      transform:scale(1.07);
+    }
+    .btn-secondary {
+      background:#ffffffcc;
+      color:#F97316;
+      border:2px solid #F97316;
+    }
+    .btn-secondary:hover {
+      background:#fff7ed;
+      color:#EA580C;
+      transform:scale(1.05);
+    }
+    .card {
+      border-radius:0.75rem;
+      background:rgba(255,255,255,0.9);
+      box-shadow:0 4px 10px rgba(0,0,0,0.08);
+      transition:transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform:translateY(-6px);
+      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    }
+    .section-title {
+      font-weight:800;
+      letter-spacing:-0.025em;
+    }
+    .hero-bg-image {
+      position: relative;
+      background-image: url('https://placehold.co/FED7AA/F97316?font=inter');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+    @media (max-width:640px){
+      .hero-bg-image { background-attachment: scroll; }
+    }
+    .hero-content { position: relative; z-index: 1; }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <section id="book-appointment" class="hero-bg-image py-16 sm:py-24 md:py-32 text-center">
+    <div class="hero-overlay"></div>
+    <div class="hero-content container mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-800 mb-6 leading-tight">
+        Empower Your Child with <span class="text-zt-orange">Free</span> Expert Peer Tutoring
+      </h1>
+      <p class="text-base sm:text-lg md:text-xl text-gray-800 mb-8 max-w-3xl mx-auto">
+        Zoomtutors, a non-profit, offers free peer tutoring by experienced tutors in AP, IB, AICE, and Dual Enrollment courses to help your child excel.
+      </p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLScie_Nlqbt3ldEomHnsrVzbJJ42-zYavDdfC9PO70ve80CRTQ/viewform"
+         target="_blank" rel="noopener noreferrer" class="btn-enhanced-primary">
+        Book a Free Session
+      </a>
+    </div>
+  </section>
+  <!-- Why Us -->
+  <section id="why-us" class="py-16 sm:py-20 bg-orange-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title text-2xl sm:text-3xl md:text-4xl text-center text-gray-800 mb-6">Why Choose Zoomtutors?</h2>
+      <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto">We provide high-quality, accessible education for all students, free of charge.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div class="card p-6 text-center">
+          <div class="bg-zt-orange text-white text-3xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full shadow-lg">
+            <i class="fas fa-hand-holding-heart"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Completely Free</h3>
+          <p class="text-gray-700 text-sm">Our non-profit model ensures all tutoring services are 100% free, removing financial barriers.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="bg-zt-orange text-white text-3xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full shadow-lg">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Expert Peer Tutors</h3>
+          <p class="text-gray-700 text-sm">Our 60+ tutors, proficient in college-level courses, are dedicated to your success.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="bg-zt-orange text-white text-3xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full shadow-lg">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Top-Tier Quality</h3>
+          <p class="text-gray-700 text-sm">Our tutors have an average SAT score of 1400<sup>*</sup>, placing them in the 95th percentile (Top 5%) nationwide.</p>
+          <p class="text-gray-700 text-xs mt-2"><sup>*</sup> This is the average of our SAT/ACT tutors who have above a 5.0 weighted GPA. All of our regular tutors have above a 4.5 weighted GPA and meet or exceed our selection criteria.</p>
+        </div>
+        <div class="card p-6 text-center">
+          <div class="bg-zt-orange text-white text-3xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full shadow-lg">
+            <i class="fas fa-graduation-cap"></i>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-2">Advanced Courses</h3>
+          <p class="text-gray-700 text-sm">Specialized support for AP, IB, AICE, and Dual Enrollment courses.</p>
+        </div>
+        <!-- Community Hours Counter Card -->
+        <div class="card p-6 text-center">
+            <div class="bg-zt-orange text-white text-3xl mb-4 mx-auto w-16 h-16 flex items-center justify-center rounded-full shadow-lg">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-800 mb-2">Community Impact</h3>
+            <p class="text-gray-700 text-sm">
+                We've proudly delivered <span id="hours-counter" class="font-bold text-lg text-zt-orange">...</span>+ hours of free tutoring to our community!
+            </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Courses -->
+  <section id="courses" class="py-16 sm:py-20 bg-blue-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title text-2xl sm:text-3xl md:text-4xl text-center text-gray-800 mb-6">Courses We Cover</h2>
+      <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto">Our tutors specialize in a wide range of advanced subjects tailored to your needs.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-zt-orange mb-3">AP Courses</h3>
+          <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+            <li>AP Biology, AP Chemistry</li>
+            <li>AP Human Geography</li>
+            <li>AP Calculus AB & BC</li>
+            <li>AP World History, AP US Government</li>
+            <li>AP US History (AMH 2020)</li>
+          </ul>
+        </div>
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-zt-orange mb-3">Dual Enrollment</h3>
+          <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+            <li>CHM1045 (General Chemistry I)</li>
+            <li>BSC2010 (Principles of Biology I)</li>
+            <li>AMH2010 (American History to 1877)</li>
+            <li>AMH2020 (American History since 1877)</li>
+            <li>And more...</li>
+          </ul>
+        </div>
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-zt-orange mb-3">IB & AICE Programs</h3>
+          <p class="text-gray-700 text-sm">Support for International Baccalaureate (IB) and Cambridge AICE Diploma courses. Contact us for specific subjects.</p>
+        </div>
+        <div class="card p-6">
+          <h3 class="text-lg font-semibold text-zt-orange mb-3">SAT/ACT/College Prep</h3>
+          <p class="text-gray-700 text-sm">Preparation for SAT, ACT exams, and college applications, including essay writing and test strategies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Tutors -->
+  <section id="tutors" class="py-16 sm:py-20 bg-orange-50 text-center">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title text-2xl sm:text-3xl md:text-4xl text-gray-800 mb-6">Meet Our Expert Tutors</h2>
+      <p class="text-gray-700 mb-8 max-w-2xl mx-auto">Our tutors are passionate peers who have excelled in the very same courses your child is taking.</p>
+      <a href="https://www.zoomtutors.tech/who-we-are#:~:text=Sadie%20Kraus-,TUTORS,-ENGLISH"
+         target="_blank" rel="noopener noreferrer" class="btn-enhanced-primary">
+        View All Tutors
+      </a>
+    </div>
+  </section>
+  <!-- How to Book -->
+  <section id="how-to-book" class="py-16 sm:py-20 bg-blue-50">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="section-title text-2xl sm:text-3xl md:text-4xl text-center text-gray-800 mb-6">Easy Steps to Get Started</h2>
+      <p class="text-center text-gray-700 mb-12 max-w-2xl mx-auto">Booking a free tutoring session is simple and fast.</p>
+      <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+        <div class="p-4 text-center">
+          <div class="bg-zt-orange text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-md">1</div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Sign Up</h3>
+          <p class="text-gray-700 text-sm">Complete our quick form with your details and course requirements.</p>
+        </div>
+        <div class="p-4 text-center">
+          <div class="bg-zt-orange text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-md">2</div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Get Matched</h3>
+          <p class="text-gray-700 text-sm">We’ll pair you with an expert peer tutor for your chosen subject.</p>
+        </div>
+        <div class="p-4 text-center">
+          <div class="bg-zt-orange text-white w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4 shadow-md">3</div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Start Learning</h3>
+          <p class="text-gray-700 text-sm">Join your free Zoom session and enhance your understanding.</p>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScie_Nlqbt3ldEomHnsrVzbJJ42-zYavDdfC9PO70ve80CRTQ/viewform"
+           target="_blank" rel="noopener noreferrer" class="btn-primary">
+          Book Your Free Session Now
+        </a>
+      </div>
+    </div>
+  </section>
+  <!-- Community Feedback -->
+  <section id="community-feedback" class="py-16 sm:py-20 bg-zt-orange text-white">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="section-title text-2xl sm:text-3xl md:text-4xl mb-6">Join Our Community</h2>
+      <p class="text-base sm:text-lg mb-8 max-w-3xl mx-auto">
+        Connect with students and parents in our communities or share feedback to help us improve.
+      </p>
+      <div class="flex flex-col sm:flex-row flex-wrap justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+        <a href="https://teams.live.com/dl/launcher/launcher.html?url=%2F_%23%2Fl%2Fcommunity%2FFAAqpTg8FxhrMnxpQ&type=community&deeplinkId=03751d1a-0b09-4e42-9e30-2532538de1b0&directDl=true&msLaunch=true&enableMobilePage=true&suppressPrompt=true"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fab fa-microsoft mr-2"></i>Join on Teams
+        </a>
+        <a href="https://chat.whatsapp.com/GPhe2MXL51xA37ARf0wiGB"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fab fa-whatsapp mr-2"></i>Join on WhatsApp
+        </a>
+        <a href="https://discord.gg/MMsmbGD4nG"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fab fa-discord mr-2"></i>Join on Discord
+        </a>
+        <a href="https://www.instagram.com/zoomtutors_broward/?next=%2F"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fab fa-instagram mr-2"></i>Follow on Instagram
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSd7gfbI8o0HqMoX3LZnlhaDu7W9eR9X4DM4A9fsA7JiAVj9rA/viewform"
+           target="_blank" rel="noopener noreferrer" class="btn-secondary">
+          <i class="fas fa-comment-dots mr-2"></i>Give Feedback
+        </a>
+      </div>
+    </div>
+  </section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // --- Configuration for Hour Counter ---
+    const baseHours = 250; // The starting number of hours.
+    const weeklyHours = 15; // Hours to add per week.
+    // Set the "start date" for the calculation. This date is *inclusive*.
+    const startDate = new Date('2025-11-09T00:00:00');
+    // --- End Configuration ---
+    function calculateTotalHours() {
+      let totalHours = baseHours;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0); // Normalize today to start of day
+      let currentDate = new Date(startDate.getTime());
+      currentDate.setHours(0, 0, 0, 0); // Normalize start date
+      const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+      const weeks = Math.floor((today - currentDate) / msPerWeek);
+      if (weeks > 0) {
+        totalHours += weeklyHours * weeks;
+      }
+      return totalHours;
+    }
+    function animateCounter(targetValue) {
+      const counterElement = document.getElementById('hours-counter');
+      if (!counterElement) return;
+      const duration = 2000; // Animation duration in milliseconds
+      let startTimestamp = null;
+      const startValue = baseHours; // Start animation from baseHours
+      const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+       
+        const currentValue = Math.floor(progress * (targetValue - startValue) + startValue);
+       
+        counterElement.textContent = currentValue.toLocaleString();
+       
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        } else {
+          // Ensure final value is set
+          counterElement.textContent = targetValue.toLocaleString();
+        }
+      };
+     
+      window.requestAnimationFrame(step);
+    }
+   
+    // Run the calculator and animator
+    const finalHours = calculateTotalHours();
+    animateCounter(finalHours);
+   
+  });
+</script>
+</body>
+</html>

@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ZoomTutors Content</title>
+  <title>ZoomTutors | Free Peer Tutoring</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
     body {
       font-family: 'Inter', sans-serif;
       line-height: 1.6;
       scroll-behavior: smooth;
       background-color: #f8fafc;
-      margin: 0;
       overflow-x: hidden;
     }
 
@@ -47,10 +52,12 @@
       position: relative;
       background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop');
       background-size: cover; background-position: center;
+      /* Ensures the background stays fixed while scrolling for a cool effect */
+      background-attachment: fixed; 
     }
     .hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(249, 115, 22, 0.3));
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.85), rgba(249, 115, 22, 0.25));
       z-index: 0;
     }
     .hero-content { position: relative; z-index: 1; }
@@ -58,14 +65,14 @@
 </head>
 <body>
 
-  <section id="hero" class="hero-bg-image py-24 md:py-32 flex items-center justify-center">
+  <section id="hero" class="hero-bg-image min-h-screen flex items-center justify-center py-20 relative">
     <div class="hero-overlay"></div>
     <div class="hero-content container mx-auto px-4 text-center">
       <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-orange-500/20 border border-orange-400/30 backdrop-blur-md">
         <span class="text-orange-100 font-bold text-sm tracking-wide uppercase">🚀 Non-Profit & 100% Free</span>
       </div>
       
-      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
+      <h1 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight drop-shadow-lg">
         Master Your Classes with <br />
         <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-orange-400">Expert Peer Tutors</span>
       </h1>
@@ -83,7 +90,7 @@
     </div>
   </section>
 
-  <div class="bg-white border-b border-gray-100 relative z-20 mx-auto max-w-5xl -mt-8 rounded-xl shadow-xl flex flex-col md:flex-row justify-around py-6 px-4 text-center">
+  <div class="bg-white border-b border-gray-100 relative z-20 mx-auto max-w-5xl -mt-16 rounded-xl shadow-xl flex flex-col md:flex-row justify-around py-6 px-4 text-center">
     <div class="mb-4 md:mb-0">
       <div class="text-3xl font-bold text-gray-900">100%</div>
       <div class="text-sm text-gray-500 font-bold uppercase">Free</div>
@@ -119,7 +126,7 @@
       <div class="card p-8 text-center group border-t-4 border-zt-orange">
         <div class="text-4xl text-zt-orange mb-4 group-hover:scale-110 transition-transform"><i class="fas fa-medal"></i></div>
         <h3 class="text-xl font-bold mb-2">Top Talent</h3>
-        <p class="text-gray-600 text-sm">Our tutors have above the 80th percentile in SAT/ACT or PSAT. With a average of 90th precentile  </p>
+        <p class="text-gray-600 text-sm">Our tutors score in the 90th percentile for SAT/ACT and subject exams.</p>
       </div>
     </div>
   </section>

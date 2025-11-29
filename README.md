@@ -4,9 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ZoomTutors | Free Peer Tutoring</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
+  
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
   <style>
     html, body {
       margin: 0;
@@ -52,7 +56,6 @@
       position: relative;
       background-image: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop');
       background-size: cover; background-position: center;
-      /* Ensures the background stays fixed while scrolling for a cool effect */
       background-attachment: fixed; 
     }
     .hero-overlay {
@@ -220,39 +223,39 @@
     <p class="text-gray-500 text-sm">&copy; 2025 ZoomTutors. All rights reserved.</p>
   </footer>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Counter Logic
-    const baseHours = 250; 
-    const weeklyHours = 15; 
-    const startDate = new Date('2025-11-09T00:00:00');
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Counter Logic
+      const baseHours = 250; 
+      const weeklyHours = 15; 
+      const startDate = new Date('2025-11-09T00:00:00');
 
-    function calculateTotalHours() {
-      let totalHours = baseHours;
-      const today = new Date(); today.setHours(0, 0, 0, 0);
-      let currentDate = new Date(startDate.getTime()); currentDate.setHours(0, 0, 0, 0);
-      const msPerWeek = 7 * 24 * 60 * 60 * 1000;
-      const weeks = Math.floor((today - currentDate) / msPerWeek);
-      if (weeks > 0) totalHours += weeklyHours * weeks;
-      return totalHours;
-    }
+      function calculateTotalHours() {
+        let totalHours = baseHours;
+        const today = new Date(); today.setHours(0, 0, 0, 0);
+        let currentDate = new Date(startDate.getTime()); currentDate.setHours(0, 0, 0, 0);
+        const msPerWeek = 7 * 24 * 60 * 60 * 1000;
+        const weeks = Math.floor((today - currentDate) / msPerWeek);
+        if (weeks > 0) totalHours += weeklyHours * weeks;
+        return totalHours;
+      }
 
-    function animateCounter(targetValue) {
-      const el = document.getElementById('hours-counter-banner');
-      if (!el) return;
-      const duration = 2000; let startTimestamp = null; const startValue = 100;
-      
-      const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const currentValue = Math.floor(progress * (targetValue - startValue) + startValue);
-        el.textContent = currentValue.toLocaleString() + "+";
-        if (progress < 1) window.requestAnimationFrame(step);
-      };
-      window.requestAnimationFrame(step);
-    }
-    animateCounter(calculateTotalHours());
-  });
-</script>
+      function animateCounter(targetValue) {
+        const el = document.getElementById('hours-counter-banner');
+        if (!el) return;
+        const duration = 2000; let startTimestamp = null; const startValue = 100;
+        
+        const step = (timestamp) => {
+          if (!startTimestamp) startTimestamp = timestamp;
+          const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+          const currentValue = Math.floor(progress * (targetValue - startValue) + startValue);
+          el.textContent = currentValue.toLocaleString() + "+";
+          if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+      }
+      animateCounter(calculateTotalHours());
+    });
+  </script>
 </body>
 </html>

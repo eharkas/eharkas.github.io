@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ZoomTutors AI Suite</title>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
     
     <style>
         /* --- THEME VARIABLES --- */
@@ -32,6 +33,7 @@
             background: var(--bg);
             color: var(--text-main);
             height: 100vh;
+            width: 100vw;
             display: flex;
             overflow: hidden;
         }
@@ -109,6 +111,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
+            scroll-behavior: smooth;
         }
 
         .message { max-width: 85%; padding: 1rem; border-radius: 12px; line-height: 1.6; font-size: 0.95rem; }
@@ -147,7 +150,7 @@
         }
         .send-btn:hover { transform: scale(1.05); }
 
-        /* --- QUIZ INTERFACE (NEW) --- */
+        /* --- QUIZ INTERFACE --- */
         .quiz-setup-container {
             flex: 1; display: flex; flex-direction: column; padding: 2rem; gap: 1.5rem;
             max-width: 800px; margin: 0 auto; width: 100%;
@@ -209,6 +212,14 @@
 
         /* Loader */
         .loader { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.8); padding: 2rem; border-radius: 12px; z-index: 100; display: none; text-align: center; }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .options-grid { grid-template-columns: 1fr; }
+            .mode-selector { grid-template-columns: 1fr; }
+            .sidebar { width: 50px; }
+            .nav-icon { width: 35px; height: 35px; font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
@@ -278,13 +289,12 @@
                         <div id="q-text" class="q-text">Loading question...</div>
                     </div>
 
-                    <div id="options-container" class="options-grid">
-                        </div>
+                    <div id="options-container" class="options-grid"></div>
 
                     <div id="explanation-box" class="explanation-box"></div>
 
                     <div class="quiz-controls">
-                        <button class="action-btn" style="background:var(--border);" onclick="endQuiz()">End Quiz</button>
+                        <button class="action-btn" style="background:var(--border);" onclick="resetQuizState()">End Quiz</button>
                         <button id="next-q-btn" class="action-btn" style="background:var(--accent-quiz); display:none;" onclick="nextQuestion()">Next Question ➤</button>
                     </div>
                 </div>
@@ -314,6 +324,7 @@
 
     <script>
         // --- API CONFIG ---
+        // Warning: This key is visible in public source. 
         const MISTRAL_API_KEY = "UOVmPQ2Hr47M24ssHHwGVJqi6VI9ktGd";
         const API_URL = "https://api.mistral.ai/v1/chat/completions";
         const MODEL = "mistral-small-latest";
@@ -327,7 +338,7 @@
         const modeSettings = {
             'prep': { color: 'var(--accent-prep)', placeholder: 'Paste problem here...', prompt: 'You are an SAT/ACT tutor. Break down this problem step-by-step.' },
             'chat': { color: 'var(--accent-chat)', placeholder: 'Message AI...', prompt: 'You are a helpful tutor.' },
-            'quiz': { color: 'var(--accent-quiz)' } // Handled separately
+            'quiz': { color: 'var(--accent-quiz)' } 
         };
 
         // --- NAVIGATION ---
@@ -371,7 +382,7 @@
             }
         }
 
-        // --- CHAT LOGIC (Prep & Normal) ---
+        // --- CHAT LOGIC ---
         async function sendChat() {
             const input = document.getElementById('ai-input');
             const chat = document.getElementById('chat-output');
@@ -523,34 +534,27 @@
             currentQIndex = 0;
             score = 0;
             
-            // Reset UI
+            // Reset UI to Setup Screen
             document.getElementById('quiz-source-text').value = '';
             document.getElementById('quiz-active').style.display = 'none';
-            document.getElementById('quiz-active').innerHTML = `
+            document.getElementById('quiz-setup').style.display = 'flex';
+            
+            // Reset Active Container HTML for next run
+            const activeDiv = document.getElementById('quiz-active');
+            activeDiv.innerHTML = `
                 <div style="display:flex; justify-content:space-between; margin-bottom:0.5rem;">
                     <span id="quiz-progress-text">Question 1 of 5</span>
                     <span style="color:var(--accent-quiz); font-weight:bold;">Score: <span id="quiz-score">0</span></span>
                 </div>
                 <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
-                
-                <div class="question-card">
-                    <div id="q-text" class="q-text">Loading question...</div>
-                </div>
-
+                <div class="question-card"><div id="q-text" class="q-text">Loading...</div></div>
                 <div id="options-container" class="options-grid"></div>
-
                 <div id="explanation-box" class="explanation-box"></div>
-
                 <div class="quiz-controls">
-                    <button class="action-btn" style="background:var(--border);" onclick="endQuiz()">End Quiz</button>
+                    <button class="action-btn" style="background:var(--border);" onclick="resetQuizState()">End Quiz</button>
                     <button id="next-q-btn" class="action-btn" style="background:var(--accent-quiz); display:none;" onclick="nextQuestion()">Next Question ➤</button>
                 </div>
             `;
-            document.getElementById('quiz-setup').style.display = 'flex';
-        }
-
-        function endQuiz() {
-            if(confirm("Quit this quiz?")) resetQuizState();
         }
 
         // --- GRAMMAR ---
